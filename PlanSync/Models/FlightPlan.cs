@@ -44,6 +44,8 @@ namespace PlanSync.Models
     [XmlRoot(ElementName = "FlightPlan.FlightPlan")]
     public class FlightPlan
     {
+        public string FilePath { get; set; }
+
         [XmlElement(ElementName = "AppVersion")]
         public AppVersion AppVersion { get; set; }
 

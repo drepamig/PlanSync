@@ -1,9 +1,4 @@
 ﻿using PlanSync.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace PlanSync
@@ -17,7 +12,10 @@ namespace PlanSync
 
             var doc = reader.Deserialize(file) as SimBaseDocument;
 
-            return doc.FlightPlan;
+            var fpl = doc.FlightPlan;
+
+            fpl.FilePath = path;
+            return fpl;
         }
     }
 }

@@ -1,14 +1,74 @@
-﻿<mah:MetroWindow x:Class="PlanSync.UI.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlanSync.UI"
-        mc:Ignorable="d"
-                 WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800">
+﻿<mah:MetroWindow
+    x:Class="PlanSync.UI.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:PlanSync.UI"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="PlanSync"
+    Width="800"
+    Height="450"
+    SaveWindowPosition="True"
+    TitleCharacterCasing="Normal"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button x:Name="SettingsToggle">
+                <iconPacks:PackIconFontAwesome  Kind="ToolsSolid" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl>
+            <mah:Flyout
+                x:Name="SettingsFlyout"
+                Width="450"
+                Header="Settings"
+                IsOpen="True"
+                Position="Right"
+                >
+                <Grid>
+                    <Grid.Resources>
+                        <Style
+                            x:Shared="False"
+                            BasedOn="{StaticResource MahApps.Styles.TextBox.Button}"
+                            TargetType="TextBox">
+                            <!--<Setter Property="Background" Value="LightGray" />-->
+                            <Setter Property="Height" Value="40" />
+                            <Setter Property="Margin" Value="5" />
+                            <Setter Property="IsReadOnly" Value="True"/>
+
+                            <Setter Property="mah:TextBoxHelper.TextButton" Value="True" />
+                            <Setter Property="mah:TextBoxHelper.UseFloatingWatermark" Value="True" />
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBox
+                        x:Name="GlobalPath"
+                        Grid.Row="0"
+                        mah:TextBoxHelper.Watermark="Global Flightplan Folder"
+                        Text="Global Path..." />
+                    <TextBox
+                        x:Name="GPSPath"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        mah:TextBoxHelper.Watermark="GNS430/GNS530 Flightplan Folder"
+                        Text="GPS Path..." />
+                </Grid>
+            </mah:Flyout>
+
+        </mah:FlyoutsControl>
+    </mah:MetroWindow.Flyouts>
     <Grid>
-        <TextBlock Text="IT WORKS from the view" x:Name="Greeting"/>
+        <TextBlock x:Name="Greeting" Text="IT WORKS from the view" />
     </Grid>
 </mah:MetroWindow>

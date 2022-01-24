@@ -1,5 +1,7 @@
-﻿using ReactiveUI;
+﻿using PlanSync.Models;
+using ReactiveUI;
 using Splat;
+using System.Configuration;
 using System.Reflection;
 using System.Windows;
 
@@ -16,6 +18,7 @@ namespace PlanSync.UI
             // into our dependency injection container. ReactiveUI uses Splat for it's
             // dependency injection by default, but you can override this if you like.
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
+            Locator.CurrentMutable.RegisterConstant(Settings.ReadOrCreate().Result, typeof(Settings));
         }
     }
 }
